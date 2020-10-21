@@ -1,4 +1,5 @@
 import { createElement } from "../utils/elements";
+import "./Character.css";
 
 export function Character({ name, imgSrc }) {
   const fullName = createElement("h3", {

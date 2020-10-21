@@ -1,0 +1,22 @@
+.searchBar {
+    width: 100%;
+    background-color: var(--color-bg-cards);
+    border-bottom: 1px solid var(--color-border-img);
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .searchBar > input {
+    background-color: var( --color-searchField);
+    border: none;
+    height: 2rem;
+    width: 60%;
+  }
+  
+  .searchBar > button {
+    background-color: var(--color-searchButton);
+    border: none;
+    border-left: 1px solid white;
+    width: 10rem;
+  }

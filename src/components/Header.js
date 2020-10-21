@@ -1,4 +1,5 @@
 import { createElement } from "../utils/elements";
+import "./Header.css";
 
 export function Header() {
   const header = createElement("header", {
