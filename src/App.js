@@ -21,10 +21,15 @@ function App() {
   
   async function searchCharacters(query) {
     const characters = await getCharactersByName(query);
-    const characterElements = characters.map((singleCharacter) => {
+    const characterElements = characters.map((character) => {
       return Character({
-        name: singleCharacter.name,
-        imgSrc: singleCharacter.image,
+        name: character.name,
+        imgSrc: character.image,
+        status: character.status,
+        species: character.species,
+        type: character.type,
+        origin: character.origin.name,
+        location: character.location.name,
       });
     });
     main.innerHTML = "";
