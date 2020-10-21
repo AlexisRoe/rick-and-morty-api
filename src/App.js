@@ -9,26 +9,25 @@ function App() {
   const page = createElement("div");
 
   const header = Header();
-  /* const header = createElement("header", { className: "header", innerText: "Rick and Morty" }); */
   page.append(header);
 
-  const main = createElement("main", { className: "main" });
+  const main = createElement("article", { className: "main" });
+  page.append(main);
 
   async function getMoreCharacter(page = 1) {
     const characters = await getCharactersByPage(page);
-    characters.forEach(singleCharacter => {
-      main.append(
-        Character({
-          name: singleCharacter.name,
-          imgSrc: singleCharacter.image,
-        })
-      );
+    const characterElements = characters.map((singleCharacter) => {
+      return Character({
+        name: singleCharacter.name,
+        imgSrc: singleCharacter.image,
+      });
     });
+    main.append(...characterElements);
   }
 
   getMoreCharacter();
 
-  page.append(main);
+
   return page;
 }
 

@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mogra&display=swap");
 
 *,
 *::before,
@@ -7,16 +8,20 @@
 }
 
 :root {
-  --color-bg-cards: rgb(252, 246, 236);
+  /* --color-bg-cards: rgb(252, 246, 236); */
+  --color-bg-cards: rgb(60, 62, 68);
   --color-title-character: rgb(39, 38, 38);
   --color-border-img: white;
-  --color-bg: rgb(170, 154, 126);
+  /* --color-bg: rgb(170, 154, 126); */
+  --color-bg: rgb(36, 40, 47);
   --font-family: "Patrick Hand", cursive;
+  --font-family2: "Mogra", cursive;
 }
 
 html {
   font-size: 16px;
-  font-family: var(--font-family);
+  font-family: var(--font-family2);
+  color: white;
   height: 100%;
 }
 
@@ -29,6 +34,7 @@ body {
 .header {
   width: 100%;
   background-color: var(--color-bg-cards);
+  border-bottom: 1px solid var(--color-border-img);
   display: grid;
   place-items: center;
   position: fixed;
@@ -41,8 +47,8 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   padding: 1rem;
-  row-gap: 1rem;
-  column-gap: 0.8rem;
+  row-gap: 2rem;
+  column-gap: 1.8rem;
   width: 100%;
 }
 
@@ -52,16 +58,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  border-radius: 15px;
   width: 21rem;
 }
 .character-fullName {
-  color: var(--color-title-character);
   font-size: 1.5rem;
-  font-weight: bold;
-  text-transform: uppercase;
+  margin-bottom: 2rem;
 }
 
 .character-img {
-  border: 5px solid var(--color-border-img);
+  width: 100%;
+  border-radius: 0 0 15px 15px;
 }

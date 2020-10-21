@@ -12,7 +12,7 @@ export function Character({ name, imgSrc }) {
     alt: name,
   });
 
-  const container = createElement("div", {
+  const container = createElement("section", {
     className: "character-Container",
     children: [fullName, image],
   });
