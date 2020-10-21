@@ -4,7 +4,7 @@ import { getCharacterById } from "./utils/api";
 import { Character } from "./components/Character";
 
 function App() {
-  const main = createElement("main");
+  const main = createElement("main", {className: "main"});
 
   async function getCharacter() {
     const character1 = await getCharacterById(1);
@@ -15,10 +15,17 @@ function App() {
     );
   };
 
-  getCharacter();
+  async function getMoreCharacter(...characterIDs){
+    characterIDs.forEach(async function (element) {
+      const character = await getCharacterById(element);
+      main.append(Character({name: character.name, imgSrc:character.image}));
+    });
+  };
 
-  const container = createElement("div", { children: [main] });
-  return container;
+  /* getCharacter(); */
+  getMoreCharacter(1,2,3,4,6);
+
+  return main;
 }
 
 export default App;
