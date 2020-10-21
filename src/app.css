@@ -26,13 +26,24 @@ body {
   height: 100%;
 }
 
+.header {
+  width: 100%;
+  background-color: var(--color-bg-cards);
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+}
+
 .main {
+  margin-top: 6rem;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   padding: 1rem;
   row-gap: 1rem;
   column-gap: 0.8rem;
-  width: 100vw;
+  width: 100%;
 }
 
 .character-Container {

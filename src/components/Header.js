@@ -1,13 +1,13 @@
-import "./header.css";
 import { createElement } from "../utils/elements";
 
-function Header() {
-
+export function Header() {
   const header = createElement("header", {
     className: "header",
-    innerText: "Rick and Morty"
+    children: [
+      createElement("H1", {
+        innerText: "Rick and Morty",
+      }),
+    ],
   });
   return header;
 }
-
-export default Header;

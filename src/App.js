@@ -1,11 +1,17 @@
 import "./app.css";
 import { createElement } from "./utils/elements";
-/* import { getCharacterById } from "./utils/api"; */
 import { getCharactersByPage } from "./utils/api";
 
 import { Character } from "./components/Character";
+import { Header } from "./components/Header";
 
 function App() {
+  const page = createElement("div");
+
+  const header = Header();
+  /* const header = createElement("header", { className: "header", innerText: "Rick and Morty" }); */
+  page.append(header);
+
   const main = createElement("main", { className: "main" });
 
   async function getMoreCharacter(page = 1) {
@@ -22,7 +28,8 @@ function App() {
 
   getMoreCharacter();
 
-  return main;
+  page.append(main);
+  return page;
 }
 
 export default App;
