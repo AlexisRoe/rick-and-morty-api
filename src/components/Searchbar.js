@@ -1,8 +1,7 @@
 import { createElement } from "../utils/elements";
-import { getCharactersByName } from "./utils/api";
-import { Character } from "./components/Character";
+import { searchCharacters } from "../App";
 
-export function Searchbar(main) {
+export function Searchbar() {
   const inputField = createElement("input", {
     type: "text",
     placeholder: "Who are you looking for?",
@@ -32,18 +31,6 @@ export function Searchbar(main) {
       }),
     ],
   });
-
-  async function searchCharacters(query) {
-    const characters = await getCharactersByName(query);
-    // if lesser are needed: const newArray = characters.slice(startIndex, amountItems);
-    const characterElements = characters.map((singleCharacter) => {
-      return Character({
-        name: singleCharacter.name,
-        imgSrc: singleCharacter.image,
-      });
-    });
-    main.append(...characterElements);
-  }
 
   return searchbar;
 }
