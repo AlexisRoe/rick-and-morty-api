@@ -8,11 +8,11 @@
 }
 
 :root {
-  /* --color-bg-cards: rgb(252, 246, 236); */
   --color-bg-cards: rgb(60, 62, 68);
   --color-title-character: rgb(39, 38, 38);
   --color-border-img: white;
-  /* --color-bg: rgb(170, 154, 126); */
+  --color-searchField: rgb(192, 194, 197);
+  --color-searchButton: rgb(174, 174, 175);
   --color-bg: rgb(36, 40, 47);
   --font-family: "Patrick Hand", cursive;
   --font-family2: "Mogra", cursive;
@@ -34,11 +34,31 @@ body {
 .header {
   width: 100%;
   background-color: var(--color-bg-cards);
-  border-bottom: 1px solid var(--color-border-img);
   display: grid;
   place-items: center;
-  position: fixed;
-  top: 0;
+}
+
+.searchBar {
+  width: 100%;
+  background-color: var(--color-bg-cards);
+  border-bottom: 1px solid var(--color-border-img);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.searchBar > input {
+  background-color: var( --color-searchField);
+  border: none;
+  height: 2rem;
+  width: 60%;
+}
+
+.searchBar > button {
+  background-color: var(--color-searchButton);
+  border: none;
+  border-left: 1px solid white;
+  width: 10rem;
 }
 
 .main {
