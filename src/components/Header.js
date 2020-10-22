@@ -5,8 +5,13 @@ export function Header() {
   const header = createElement("header", {
     className: "header",
     children: [
-      createElement("H1", {
-        innerText: "Rick and Morty",
+      createElement("a", {
+        href: "",
+        children: [
+          createElement("H1", {
+            innerText: "Rick and Morty",
+          }),
+        ],
       }),
     ],
   });
