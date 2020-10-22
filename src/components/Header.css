@@ -5,7 +5,7 @@
     place-items: center;
   }
 
-  .header > a, .header > a:focus, .header > a:active  {
+  .header > a, .header > a:focus, .header > a:active,.header > a:hover, .header > a:visited  {
     color: white;
     text-decoration: none;
   }

@@ -11,6 +11,7 @@ export function Character({ name, imgSrc, status, species, type, origin, locatio
     className: "character-img",
     src: imgSrc,
     alt: name,
+    loading: "lazy",
   });
 
   if (type == "") type = "unknown";

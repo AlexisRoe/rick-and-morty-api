@@ -29,6 +29,11 @@ body {
   margin: 0;
   background: var(--color-bg);
   height: 100%;
+  scroll-behavior: smooth;
+}
+
+.page {
+  height: 100%;
 }
 
 .main {
@@ -40,4 +45,21 @@ body {
   row-gap: 2rem;
   column-gap: 1.8rem;
   width: 100%;
+}
+
+.button-to-top {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  color: white;
+  font-size: 4rem;
+  border-radius: 50%;
+  border: 1px solid white;
+  width: 5rem;
+  height: 5rem;
+  text-align: center;
+  cursor: pointer;
+  background-color: var(--color-bg);
+  display: none;
+  z-index: 1;
 }

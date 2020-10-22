@@ -10,7 +10,9 @@ function App() {
   let queryName = null;
   let nextPage = null;
 
-  const page = createElement("div");
+  const page = createElement("div", {
+    className: "page",
+  });
   const header = Header();
   const main = createElement("article", { className: "main" });
 
@@ -25,14 +27,24 @@ function App() {
     },
   });
 
-  const infiniteButton = Button({
-    innerText: "Load more",
-    className: "nextButton",
-    disabled: true,
+  const toTopButton = createElement("div",{
+    className: "button-to-top",
+    innerText: "⇧",
     onclick: () => {
-      searchCharacters(queryName, nextPage);
-    },
-  });
+      window.scrollTo(0,0);
+    }
+  })
+
+  //not in usuage anymore
+  // 
+  // const infiniteButton = Button({
+  //   innerText: "Load more",
+  //   className: "nextButton",
+  //   disabled: true,
+  //   onclick: () => {
+  //     searchCharacters(queryName, nextPage);
+  //   },
+  // });
 
   let intersectionObserver = new IntersectionObserver(
     (entries) => {
@@ -63,18 +75,23 @@ function App() {
       });
     });
 
-    infiniteButton.disabled = !characters.info.next;
+    // infiniteButton.disabled = !characters.info.next;
 
     nextPage = characters.info.next?.match(/\d+/)[0];
     queryName = query;
     main.append(...characterElements);
     intersectionObserver.observe(document.querySelector(".main > :last-child"));
+    toTopButton.style.display = "block";
   }
 
   page.append(header);
   page.append(searchBar);
   page.append(main);
-  page.append(infiniteButton);
+  page.append(toTopButton);
+
+  // infinite loading make it useless
+  // page.append(infiniteButton);
+  
 
   return page;
 }
