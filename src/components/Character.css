@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border-radius: 15px;
   width: 21rem;
 }
@@ -55,6 +55,7 @@
   background-color: var(--color-bg-cards);
   border-radius: 15px;
   padding: 15px;
+
 }
 
 .character-content p {

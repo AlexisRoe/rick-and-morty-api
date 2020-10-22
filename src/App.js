@@ -37,9 +37,9 @@ function App() {
   let intersectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        entry.intersectionRatio > 0 && nextPage > 1
-          ? searchCharacters(queryName, nextPage)
-          : console.log("nothing to load");
+        if (entry.intersectionRatio > 0 && nextPage > 1) {
+          searchCharacters(queryName, nextPage);
+        };
       });
     },
     {
