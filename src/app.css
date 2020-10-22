@@ -65,7 +65,7 @@ body {
   opacity: 0;
   z-index: 1;
   animation-duration: .5s;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
   animation-name: var(--animationName);
 }
 
