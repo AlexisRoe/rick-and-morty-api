@@ -26,13 +26,13 @@ function App() {
     },
   });
 
-  const toTopButton = createElement("div",{
+  const toTopButton = createElement("div", {
     className: "button-to-top",
     innerText: "⇧",
     onclick: () => {
-      window.scrollTo(0,0);
-    }
-  })
+      window.scrollTo(0, 0);
+    },
+  });
 
   let intersectionObserver = new IntersectionObserver(
     (entries) => {
@@ -67,10 +67,20 @@ function App() {
     queryName = query;
     main.append(...characterElements);
     intersectionObserver.observe(document.querySelector(".main > :last-child"));
-    toTopButton.style.display = "block";
   }
 
   page.append(header, searchBar, main, toTopButton);
+
+  window.onscroll = () => {
+    if (
+      document.body.scrollTop > 500 ||
+      document.documentElement.scrollTop > 250
+    ) {
+      document.documentElement.style.setProperty("--animationName", "fadeIn");
+    } else {
+      document.documentElement.style.setProperty("--animationName", "fadeOut");
+    }
+  };
 
   return page;
 }
