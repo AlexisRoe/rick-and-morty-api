@@ -14,11 +14,11 @@ export function Character({
   id,
 }) {
   let currentFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  const isItThere = currentFavorites.includes(id);
+  let isItThere = currentFavorites.includes(id);
 
   const favoriteImg = createElement("img", {
     src: isItThere ? favoritesEnabled : favoritesDisabled,
-    alt: isItThere ? "It´s my favorite" : "Like me?",
+    alt: isItThere ? "Yeah, I´m your favorite" : "Don´t you like me?",
     className: "favorite",
   });
 
@@ -30,21 +30,27 @@ export function Character({
       }),
       createElement("button", {
         className: "favoritesButton",
+        children: [favoriteImg],
         onclick: () => {
-          if (isItThere) {
+          let currentFavorites = JSON.parse(
+            localStorage.getItem("favorites") || "[]"
+          );
+
+          if (currentFavorites.includes(id)) {
             currentFavorites = currentFavorites.filter(
-              favorite => favorite !== id
+              (favorite) => favorite !== id
             );
+            favoriteImg.src = favoritesDisabled;
+            favoriteImg.alt = "Don´t you like me?";
           } else {
             currentFavorites.push(id);
+            favoriteImg.src = favoritesEnabled;
+            favoriteImg.alt = "Yeah, I´m your favorite";
           }
 
           localStorage.setItem("favorites", JSON.stringify(currentFavorites));
-          favoriteImg.src = !isItThere ? favoritesEnabled : favoritesDisabled;
-          favoriteImg.alt = !isItThere ? "It´s my favorite" : "Like me?";
         },
-        children: [favoriteImg]
-      })
+      }),
     ],
   });
 
