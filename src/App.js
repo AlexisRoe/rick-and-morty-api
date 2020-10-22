@@ -13,7 +13,7 @@ function App() {
   const page = createElement("div");
   const header = Header();
   const main = createElement("article", { className: "main" });
-  
+
   const searchBar = Searchbar({
     oninput: (event) => {
       main.innerHTML = "";
@@ -26,14 +26,29 @@ function App() {
   });
 
   const infiniteButton = Button({
-        innerText: "Load more",
-        className: "nextButton",
-        disabled: true,
-        onclick: () => {
-          searchCharacters(queryName, nextPage);
-        },
+    innerText: "Load more",
+    className: "nextButton",
+    disabled: true,
+    onclick: () => {
+      searchCharacters(queryName, nextPage);
+    },
+  });
+
+  let intersectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        entry.intersectionRatio > 0 && nextPage > 1
+          ? searchCharacters(queryName, nextPage)
+          : console.log("nothing to load");
       });
-  
+    },
+    {
+      root: null,
+      margin: `0px`,
+      threshold: 0,
+    }
+  );
+
   async function searchCharacters(query, page) {
     const characters = await getCharactersByName(query, page);
     const characterElements = characters.results.map((character) => {
@@ -49,16 +64,18 @@ function App() {
     });
 
     infiniteButton.disabled = !characters.info.next;
+
     nextPage = characters.info.next?.match(/\d+/)[0];
     queryName = query;
     main.append(...characterElements);
+    intersectionObserver.observe(document.querySelector(".main > :last-child"));
   }
-  
+
   page.append(header);
   page.append(searchBar);
   page.append(main);
   page.append(infiniteButton);
-  
+
   return page;
 }
 
