@@ -4,7 +4,6 @@ import { getCharactersByName } from "./utils/api";
 import { Character } from "./components/Character";
 import { Header } from "./components/Header";
 import { Searchbar } from "./components/Searchbar";
-import { Button } from "./components/Button";
 
 function App() {
   let queryName = null;
@@ -35,17 +34,6 @@ function App() {
     }
   })
 
-  //not in usuage anymore
-  // 
-  // const infiniteButton = Button({
-  //   innerText: "Load more",
-  //   className: "nextButton",
-  //   disabled: true,
-  //   onclick: () => {
-  //     searchCharacters(queryName, nextPage);
-  //   },
-  // });
-
   let intersectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -75,8 +63,6 @@ function App() {
       });
     });
 
-    // infiniteButton.disabled = !characters.info.next;
-
     nextPage = characters.info.next?.match(/\d+/)[0];
     queryName = query;
     main.append(...characterElements);
@@ -84,14 +70,7 @@ function App() {
     toTopButton.style.display = "block";
   }
 
-  page.append(header);
-  page.append(searchBar);
-  page.append(main);
-  page.append(toTopButton);
-
-  // infinite loading make it useless
-  // page.append(infiniteButton);
-  
+  page.append(header, searchBar, main, toTopButton);
 
   return page;
 }
