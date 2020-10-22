@@ -13,10 +13,13 @@ export async function getCharactersByPage(page = 1) {
 
   return characterPage.results;
 }
-export async function getCharactersByName(query) {
-  const url = `https://rickandmortyapi.com/api/character/?name=${query}`;
+export async function getCharactersByName(query, page = 1) {
+  let url = `https://rickandmortyapi.com/api/character/?page=${page}`;
+  if (query) {
+    url += `&name=${query}`;
+  }
   const response = await fetch(url);
   const charactersQuery = await response.json();
 
-  return charactersQuery.results;
+  return charactersQuery;
 }
