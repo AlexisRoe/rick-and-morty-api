@@ -29,7 +29,6 @@ body {
   margin: 0;
   background: var(--color-bg);
   height: 100%;
-  scroll-behavior: smooth;
 }
 
 .page {
@@ -62,4 +61,5 @@ body {
   background-color: var(--color-bg);
   display: none;
   z-index: 1;
+  scroll-behavior: smooth;
 }
