@@ -71,7 +71,7 @@ function App() {
         type: character.type,
         origin: character.origin.name,
         location: character.location.name,
-        id: character.id.toString(),
+        id: character.id,
       });
     });
 
