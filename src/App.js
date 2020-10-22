@@ -49,6 +49,17 @@ function App() {
     }
   );
 
+  window.onscroll = () => {
+    if (
+      // document.body.scrollTop > 500 || // seems to be deprecated
+      document.documentElement.scrollTop > 250
+    ) {
+      document.documentElement.style.setProperty("--animationName", "fadeIn");
+    } else {
+      document.documentElement.style.setProperty("--animationName", "fadeOut");
+    }
+  };
+
   async function searchCharacters(query, page) {
     const characters = await getCharactersByName(query, page);
     const characterElements = characters.results.map((character) => {
@@ -60,6 +71,7 @@ function App() {
         type: character.type,
         origin: character.origin.name,
         location: character.location.name,
+        id: character.id,
       });
     });
 
@@ -69,18 +81,8 @@ function App() {
     intersectionObserver.observe(document.querySelector(".main > :last-child"));
   }
 
+  searchCharacters();
   page.append(header, searchBar, main, toTopButton);
-
-  window.onscroll = () => {
-    if (
-      document.body.scrollTop > 500 ||
-      document.documentElement.scrollTop > 250
-    ) {
-      document.documentElement.style.setProperty("--animationName", "fadeIn");
-    } else {
-      document.documentElement.style.setProperty("--animationName", "fadeOut");
-    }
-  };
 
   return page;
 }
