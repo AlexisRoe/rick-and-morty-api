@@ -5,11 +5,11 @@ import favoritesDisabled from "../assets/favorites-disabled.svg";
 
 export function Character({id, name, src, status, species, type, origin, location, type, isFavorite}) {
   const currentFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-  const isItThere = currentFavorites.includes(prop.id);
+  const isFavorite = currentFavorites.includes(id);
 
   const favoriteImg = createElement("img", {
-    src: isItThere ? favoritesEnabled : favoritesDisabled,
-    alt: isItThere ? "Yeah, I´m your favorite" : "Don´t you like me?",
+    src: isFavorite ? favoritesEnabled : favoritesDisabled,
+    alt: isFavorite ? "Yeah, I´m your favorite" : "Don´t you like me?",
     className: "favorite",
   });
 
@@ -17,7 +17,7 @@ export function Character({id, name, src, status, species, type, origin, locatio
     className: "characterHeader",
     children: [
       createElement("h3", {
-        innerText: prop.name,
+        innerText: name,
       }),
       createElement("button", {
         className: "favoritesButton",
@@ -27,14 +27,14 @@ export function Character({id, name, src, status, species, type, origin, locatio
             localStorage.getItem("favorites") || "[]"
           );
 
-          if (currentFavorites.includes(prop.id)) {
+          if (currentFavorites.includes(id)) {
             currentFavorites = currentFavorites.filter(
-              (favorite) => favorite !== prop.id
+              (favorite) => favorite !== id
             );
             favoriteImg.src = favoritesDisabled;
             favoriteImg.alt = "Don´t you like me?";
           } else {
-            currentFavorites.push(prop.id);
+            currentFavorites.push(id);
             favoriteImg.src = favoritesEnabled;
             favoriteImg.alt = "Yeah, I´m your favorite";
           }
@@ -47,30 +47,30 @@ export function Character({id, name, src, status, species, type, origin, locatio
 
   const image = createElement("img", {
     className: "character-img",
-    src: prop.imgSrc,
-    alt: prop.name,
+    src: imgSrc,
+    alt: name,
     loading: "lazy",
   });
 
-  if (prop.type == "") prop.type = "unknown";
+  if (type == "") type = "unknown";
 
   const content = createElement("div", {
     className: "character-content",
     children: [
       createElement("p", {
-        innerText: `status: ${prop.status}`,
+        innerText: `status: ${status}`,
       }),
       createElement("p", {
-        innerText: `species: ${prop.species}`,
+        innerText: `species: ${species}`,
       }),
       createElement("p", {
-        innerText: `type: ${prop.type}`,
+        innerText: `type: ${type}`,
       }),
       createElement("p", {
-        innerText: `origin: ${prop.origin}`,
+        innerText: `origin: ${origin}`,
       }),
       createElement("p", {
-        innerText: `status: ${prop.location}`,
+        innerText: `status: ${location}`,
       }),
     ],
   });
