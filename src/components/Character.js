@@ -3,7 +3,7 @@ import "./Character.css";
 import favoritesEnabled from "../assets/favorites-enabled.svg";
 import favoritesDisabled from "../assets/favorites-disabled.svg";
 
-export function Character({ ...prop }) {
+export function Character({id, name, src, status, species, type, origin, location, type, isFavorite}) {
   const currentFavorites = JSON.parse(localStorage.getItem("favorites") || "[]");
   const isItThere = currentFavorites.includes(prop.id);
 
