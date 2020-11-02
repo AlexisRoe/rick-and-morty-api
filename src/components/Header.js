@@ -1,18 +1,19 @@
-import "./header.css";
-import logoSrc from "../assets/logo.png";
 import { createElement } from "../utils/elements";
+import "./Header.css";
 
-function Header() {
-  const logo = createElement("img", {
-    src: logoSrc,
-    alt: "Logo",
-  });
-
+export function Header() {
   const header = createElement("header", {
     className: "header",
-    children: [logo],
+    children: [
+      createElement("a", {
+        href: "",
+        children: [
+          createElement("H1", {
+            innerText: "Rick and Morty",
+          }),
+        ],
+      }),
+    ],
   });
   return header;
 }
-
-export default Header;
